@@ -16,18 +16,17 @@ namespace HomeWork6
 
         private bool disposed = false;
 
-        private ShopGenerics shop;
         public Shop(string name, string adress, TypeOfShop type)
         {
             Name = name;
             Adress = adress;
             Type = type;
-            shop = new ShopGenerics();
+          
             Console.WriteLine($"The {Name} on {Adress} has open!");
         }
         public void StartShoping()
         {
-            shop.StartShoping();
+            Console.WriteLine($"Start shoping!");
         }
         public void Dispose()
         {
