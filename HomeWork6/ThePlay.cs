@@ -13,6 +13,19 @@ namespace HomeWork6
         public int Year { get; set; }
         public string Genre { get; set; }
 
+        public ThePlay (string name, string fullname, int year, string genre)
+        {
+            Name = name;
+            FullName = fullname;
+            Year = year;
+            Genre = genre;
+            StartPlay();
+        }
+        private void StartPlay()
+        {
+            Console.WriteLine($"Start the {Name}");
+        }
+
         public void Dispose()
         {
             Console.WriteLine($"The end of {Name}");
