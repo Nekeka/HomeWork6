@@ -98,35 +98,54 @@
 	// Main program
 	class ShopGenerics
 	{
-		public static void Test()
-		{
-			var productRepo = new Repository<Product>();
-			productRepo.Add(new Product("Laptop", 1000));
-			productRepo.Add(new Product("Smartphone", 500));
-			productRepo.Add(new Product("Headphones", 100));
-			Entity ent = new Product("pr 1", 22);
+		//public static void Test()
+		//{
+		//	var productRepo = new Repository<Product>();
+		//	productRepo.Add(new Product("Laptop", 1000));
+		//	productRepo.Add(new Product("Smartphone", 500));
+		//	productRepo.Add(new Product("Headphones", 100));
+		//	Entity ent = new Product("pr 1", 22);
 			
 
-			IRepository<Entity> entityRepo = productRepo; // Covariance
+		//	IRepository<Entity> entityRepo = productRepo; // Covariance
 
-			Console.WriteLine("Product List:");
-			foreach (var entity in entityRepo.GetAll())
+		//	Console.WriteLine("Product List:");
+		//	foreach (var entity in entityRepo.GetAll())
+		//	{
+		//		if (entity is Product product)
+		//			Console.WriteLine($"- {product.Name}: {product.Price:C}");
+		//	}
+
+		//	Console.WriteLine("\nAdding products to cart...");
+		//	var cart = new ShoppingCart<Product>();
+		//	foreach (var product in productRepo.GetAll())
+		//	{
+		//		cart.AddToCart(product);
+		//	}
+
+		//	Console.WriteLine("\nApplying discount...");
+		//	var discountService = new DiscountService(10); // 10% discount
+		//	cart.Checkout(discountService);
+		//}
+
+		public void StartShoping()
+		{
+            var cart = new ShoppingCart<Product>(); int i = 0;
+            Random rnd = new Random();
+            Console.WriteLine("\nAdding products to cart...");
+            while (i < 2)
 			{
-				if (entity is Product product)
-					Console.WriteLine($"- {product.Name}: {product.Price:C}");
+				
+				Console.WriteLine("\nEnter product name");
+                string product_name = Console.ReadLine();
+				cart.AddToCart(new Product(product_name, rnd.Next(9999)));
+				i++;
+
 			}
 
-			Console.WriteLine("\nAdding products to cart...");
-			var cart = new ShoppingCart<Product>();
-			foreach (var product in productRepo.GetAll())
-			{
-				cart.AddToCart(product);
-			}
-
-			Console.WriteLine("\nApplying discount...");
-			var discountService = new DiscountService(10); // 10% discount
-			cart.Checkout(discountService);
-		}
-	}
+            var discountService = new DiscountService(10);
+            cart.Checkout(discountService);
+        }
+    }
 
 }

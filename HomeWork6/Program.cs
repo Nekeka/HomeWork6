@@ -4,12 +4,19 @@
     {
         static void Main(string[] args)
         {
-            // play test
-            using (ThePlay Hamlet = new("Hamlet", "William Shakespeare", 1600, "Tragedy"));
-
             // store test
+            
+            using Shop Rozetka = new("Rozetka", "Fontan Sky", TypeOfShop.Goods);
 
-            using (Shop Rozetka = new("Rozetra", "mall Fontan Sky", TypeOfShop.Goods)) ;
+
+
+            // play test
+            using (ThePlay Hamlet = new("Hamlet", "William Shakespeare", 1600, "Tragedy"))
+            {
+                ;
+            }
+
+            Rozetka.StartShoping();
         }
     }
 }

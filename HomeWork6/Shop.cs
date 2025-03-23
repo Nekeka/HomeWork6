@@ -1,4 +1,5 @@
 ﻿
+using ShopGenericsExmpale;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +16,22 @@ namespace HomeWork6
 
         private bool disposed = false;
 
+        private ShopGenerics shop;
         public Shop(string name, string adress, TypeOfShop type)
         {
             Name = name;
             Adress = adress;
             Type = type;
+            shop = new ShopGenerics();
+            Console.WriteLine($"The {Name} on {Adress} has open!");
+        }
+        public void StartShoping()
+        {
+            shop.StartShoping();
         }
         public void Dispose()
         {
-            CloseShop();
+            //CloseShop();
             Dispose(true);
             GC.SuppressFinalize(this);
         }
